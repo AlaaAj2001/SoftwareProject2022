@@ -93,7 +93,7 @@ public class LoginSteps {
 	@Then("login should be successful")
 	public void login_should_be_successful() {
 		if(loginflag = true) {
-			System.out.println(" Test Pass");
+			System.out.println(" Test Successfully");
 		}
 		else System.out.println(" Test Failed");
 	    // Write code here that turns the phrase above into concrete actions
