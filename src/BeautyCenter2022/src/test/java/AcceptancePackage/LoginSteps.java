@@ -78,6 +78,7 @@ public class LoginSteps {
 		// Write code here that turns the phrase above into concrete actions
 	    throw new io.cucumber.java.PendingException();
 	}
+	
 
 	@When("I enter Email as {string} and Password as {string}")
 	public void i_enter_email_as_and_password_as(String string, String string2) {
