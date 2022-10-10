@@ -56,9 +56,10 @@ Then login should be successful
 
  Examples:
  
- |       Email        |     Password      |      
- |zena.emad@gmail.com |      1548796      |            
- |alaa.ajaj@gmail.com |      1245789      |            
+ |       Email          |     Password      |      
+ |zena.emad@gmail.com   |      1548796      |            
+ |alaa.ajaj@gmail.com   |      1245789      |  
+ |najwa.hinno@gmail.com |      1976113      |           
  
  
 
