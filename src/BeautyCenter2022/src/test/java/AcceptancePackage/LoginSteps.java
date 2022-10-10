@@ -67,14 +67,12 @@ public class LoginSteps {
 
 	@When("I log in with the wrong email and correct password")
 	public void i_log_in_with_the_wrong_email_and_correct_password() {
-		loginflag = false;
 		// Write code here that turns the phrase above into concrete actions
 	    throw new io.cucumber.java.PendingException();
 	}
 	
 	@When("I log in with the wrong email and wrong password")
 	public void i_log_in_with_the_wrong_email_and_wrong_password() {
-		loginflag = false;
 		// Write code here that turns the phrase above into concrete actions
 	    throw new io.cucumber.java.PendingException();
 	}
@@ -82,10 +80,6 @@ public class LoginSteps {
 
 	@When("I enter Email as {string} and Password as {string}")
 	public void i_enter_email_as_and_password_as(String string, String string2) {
-	  if((u.Email == string) && (u.Password == string2 )){
-		  loginflag = true;
-	  }
-	  else loginflag = false;
 		// Write code here that turns the phrase above into concrete actions
 	    throw new io.cucumber.java.PendingException();
 	}
