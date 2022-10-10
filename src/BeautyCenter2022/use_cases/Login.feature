@@ -1,3 +1,4 @@
+
  @tag
  Feature: Login
  @tag1
@@ -58,7 +59,6 @@ Then login should be successful
  |       Email        |     Password      |      
  |zena.emad@gmail.com |      1548796      |            
  |alaa.ajaj@gmail.com |      1245789      |            
- 
  
  
 
