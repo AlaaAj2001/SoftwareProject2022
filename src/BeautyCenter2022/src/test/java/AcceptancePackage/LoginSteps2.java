@@ -8,12 +8,12 @@ import static org.junit.Assert.assertTrue;
 
 import Beautymain.User;
 
-public class LoginSteps {
+public class LoginSteps2 {
 	
 	User u;
 	static boolean loginflag;
 	
-	public LoginSteps(User u1) {
+	public LoginSteps2(User u1) {
 		u = u1;
 	}
 	@Given("I have chosen to login")
@@ -89,7 +89,7 @@ public class LoginSteps {
 		// Write code here that turns the phrase above into concrete actions
 	    throw new io.cucumber.java.PendingException();
 	}
-	
+
 	@Then("login should be successful")
 	public void login_should_be_successful() {
 		if(loginflag = true) {
