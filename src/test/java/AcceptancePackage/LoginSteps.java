@@ -1,6 +1,6 @@
 package AcceptancePackage;
 
-import java.util.Scanner;
+import static org.junit.Assert.assertFalse;
 
 import Beautymain.User;
 import io.cucumber.java.en.Given;
@@ -8,63 +8,69 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class LoginSteps {
-	String word;
-	Scanner sc;
-	String email1, pass1;
-	User u;
 	static boolean loginflag;
-	@Given("I have chosen to login")
-	public void iHaveChosenToLogin() {
-		u = new User();
-		u.adding();
+	String Un, P;
+	User u;
 	
-	   System.out.println("Welcome to our Beauty Salon App");
-	   System.out.println("Already have an account? enter word 'Login', if not enter word 'Signin' to create a new acoount.");
-	   sc=new Scanner(System.in);
-	   word = sc.next();
-	   }
-	   
-	@When("I enter Email as {string} and Password as {string}")
-	public void iEnterEmailAsAndPasswordAs(String email, String pass) 
+@Given("users logged in")
+public void usersLoggedIn(io.cucumber.datatable.DataTable dataTable) {
+	String UserName, Pass;
+	int PhoneNu = 0;
+	for(int i=0; i< dataTable.height() ; i++) 
 	{
-		switch (word)
-		{
-		case "Login": 
-			System.out.println("Welcome to LogIn page");
-		    System.out.println("Please enter your email");
-		    sc.nextLine();
-		    email = sc.next();
-		    email1 = email;
-			   
-				   System.out.println("Please enter your Password");
-			       sc.nextLine();
-			pass = sc.next();
-			pass1 = pass;
-			break;
-			   
-			   case "Signin":
-				   System.out.println("Welcome to SignIn page");
-				   break;
-				   
-				   default:
-					   break;
-				   }   
-		   }   
-	
-	@Then("I will get a message")
-	public void Iwillgetamessage() {
-		for(int n = 0; n< u.getClients().size(); n+=2) {
-			if((email1.contains(u.getClients().get(n))) && (pass1.contains(u.getClients().get(n+1)))) {
-				loginflag = true;	
-			} 
-			else loginflag = false;
+			UserName = dataTable.cell(i,0);
+			Pass = dataTable.cell(i,1);
+			dataTable.cell(i,2);
+			String.valueOf(PhoneNu);
 			
-			}
-		
-		if(loginflag) System.out.println("Sucsses");
-		else System.out.println("Fail");
-	
+			u = new User(UserName, Pass, PhoneNu);
+			User.USERS.add(i, u);
 	}
+    
+}
+@Given("This user has his username {string} , Password is {string}")
+public void thisUserHasHisUsernamePasswordIs(String Username, String Passw) {
+	Un = Username;
+	P = Passw;
+}
+	
+
+@When("he logged his info in and he is registered before")
+public void heLoggedHisInfoInAndHeIsRegisteredBefore() {
+	for(int i=0; i< User.USERS.size() ; i++) {
+		if((Un ==  User.USERS.get(i).UserName) &&(P ==  User.USERS.get(i).Password)) {
+			loginflag = true;}
+		else loginflag = false;
+		}
+}
+
+@When("he logged in with wrong password")
+public void heLoggedInWithWrongPassword() {
+	loginflag = false;
+}
+
+@When("he logged in with wrong username")
+public void heLoggedInWithWrongUsername() {
+	loginflag = false;
+}
+
+@When("he logged in with wrong both of them")
+public void heLoggedInWithWrongBothOfThem() {
+	loginflag = false;
+}
+
+@Then("Login complete successfully")
+public void loginCompleteSuccessfully() {
+	loginflag = true;
+}
+@Then("Login failed")
+public void loginFailed() {
+	assertFalse(loginflag);
+}
+
 
 
 }
+
+
+
