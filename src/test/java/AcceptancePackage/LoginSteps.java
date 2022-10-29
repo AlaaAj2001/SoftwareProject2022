@@ -53,15 +53,17 @@ public class LoginSteps {
 	
 	@Then("I will get a message")
 	public void Iwillgetamessage() {
-		for(int n = 0; n<= u.getClients().size(); n+=2) {
+		for(int n = 0; n< u.getClients().size(); n+=2) {
 			if((email1.contains(u.getClients().get(n))) && (pass1.contains(u.getClients().get(n+1)))) {
-				System.out.println("Sucsses");
+				loginflag = true;	
 			} 
-			else System.out.println("Fail");
+			else loginflag = false;
+			
 			}
 		
-		
-
+		if(loginflag) System.out.println("Sucsses");
+		else System.out.println("Fail");
+	
 	}
 
 
