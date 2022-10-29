@@ -1,76 +1,46 @@
 package Beautymain;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class User {
-	public static ArrayList<String> clients = new ArrayList<String>() ;
-	public static ArrayList<String> info = new ArrayList<String>() ;
+	public static ArrayList<User> USERS = new ArrayList<User>() ;
 	public String Password;
-	public String Email;
+	public String UserName;
+	public int PhoneN;
 	
+	public static ArrayList<User> getUSERS() {
+		return USERS;
+	}
+	public static void setUSERS(ArrayList<User> uSERS) {
+		USERS = uSERS;
+	}
+	public String getPassword() {
+		return Password;
+	}
+	public void setPassword(String password) {
+		Password = password;
+	}
+	public String getUserName() {
+		return UserName;
+	}
+	public void setUserName(String userName) {
+		UserName = userName;
+	}
+	public int getPhoneN() {
+		return PhoneN;
+	}
+	public void setPhoneN(int phoneN) {
+		PhoneN = phoneN;
+	}
 	
 public User(){
 		}
 
-public User(String e, String p){
-	this.Email = e;
+public User(String n, String p, int pn){
+	this.UserName = n;
 	this.Password = p;
+	this.PhoneN = pn;
 	}
 
 
-public ArrayList<String> getClients() {
-	return clients;
 }
-
-public static void setClients(ArrayList<String> clients) {
-	User.clients = clients;
-}
-
-public String getPassword() {
-	return Password;
-}
-
-public void setPassword(String password) {
-	Password = password;
-}
-
-public String getEmail() {
-	return Email;
-}
-
-public static ArrayList<String> getInfo() {
-	return info;
-}
-
-public static void setInfo(ArrayList<String> info) {
-	User.info = info;
-}
-
-public void setEmail(String email) {
-	Email = email;
-}
-
-public List<String> adding(){
-	info.add("alaaaj2001@gmail.com");
-	info.add("12345");
-	
-	info.add("zena@gmail.com");
-	info.add("123456");
-	
-	info.add("najwa@gmail.com");
-	info.add("1234567");
-	
-	clients.addAll(info);
-	
-//	for (String n : clients)
-//	System.out.println(n);
-		
-	return clients;
-	
-}
-
-
-	}
-
-
