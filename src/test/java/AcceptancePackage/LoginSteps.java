@@ -48,7 +48,7 @@ public void heLoggedInWithWrongBothOfThem() {
 
 @Then("Login complete successfully")
 public void loginCompleteSuccessfully() {
-	Assert.assertTrue(loginflag);
+	Assert.assertTrue(!loginflag);
 }
 @Then("Login failed")
 public void loginFailed() {
