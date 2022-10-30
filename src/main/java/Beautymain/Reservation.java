@@ -9,6 +9,7 @@ public class Reservation {
 	public String date;
 	public String UserName;
 	public int PhoneN;
+	
 	public String time;
 	public String TypeOfR;
 	
