@@ -51,15 +51,10 @@ public class SignupSteps {
 	
 	@When("He has not registered before")
 	public void heHasNotRegisteredBefore() {
-		String UserName, Pass;
-		int PhoneNu = 0;
 		for(int i=0; i< User.USERS.size() ; i++) {
 			while((Un !=  User.USERS.get(i).UserName) && (P !=  User.USERS.get(i).Password) && (Ph !=  User.USERS.get(i).PhoneN)) {
-				UserName = Un;
-				Pass = P;
-				PhoneNu = Ph;
 				
-				u = new User(UserName, Pass, PhoneNu);
+				u = new User(Un, P, Ph);
 				User.USERS.add(u);
 			}
 			
@@ -68,6 +63,6 @@ public class SignupSteps {
 	}
 	@Then("The registration has been completed successfully")
 	public void theRegistrationHasBeenCompletedSuccessfully() {
-		Assert.assertTrue(SignUpflag);
+		Assert.assertTrue(!SignUpflag);
 	}
 	}
