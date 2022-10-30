@@ -8,6 +8,7 @@ Background:
     |  Zena   |  0598177593 | skincleaning | 7/12/2022  |   10:00  |
     |  Najwa  |  0597336461 |    makeup    | 2/12/2022  |   12:30  |
     
+    
    
  Scenario: Pre-existing reservation
  Given This user has username "Zena" ,PhoneNumber is "0598177593" ,booked an appointment for "haircutting",on date "2/12/2022" ,at "12:00"

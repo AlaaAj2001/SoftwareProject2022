@@ -3,6 +3,7 @@ package AcceptancePackage;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+
 import org.junit.BeforeClass;
 
 import Beautymain.Reservation;
@@ -27,6 +28,7 @@ public void preBookedUsers(io.cucumber.datatable.DataTable dataTable) {
 	int PhoneNu = 0;
 	for(int i=0; i< dataTable.height() ; i++) 
 	{
+		
 			UserName = dataTable.cell(i,0);
 		    dataTable.cell(i,1).valueOf(PhoneNu);
 			Type = dataTable.cell(i,2);
