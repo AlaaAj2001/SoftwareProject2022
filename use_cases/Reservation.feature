@@ -3,10 +3,11 @@
 Background: 
    Given Pre-booked Users.
  
-    |  Zena   |  0598177593 | haircutting  | 2/12/2022  |   12:00  |
+    |  Zena   |  0598177593 | haircutting  | 2/12/2022  |   12:00  |  
     |  Alaa   |  0598479222 |  hairdyeing  | 7/11/2022  |   14:00  |
     |  Zena   |  0598177593 | skincleaning | 7/12/2022  |   10:00  |
     |  Najwa  |  0597336461 |    makeup    | 2/12/2022  |   12:30  |
+    |  alaa   |  0598479222 |    makeup    | 26/10/2022 |   12:00  |
     
     
    
