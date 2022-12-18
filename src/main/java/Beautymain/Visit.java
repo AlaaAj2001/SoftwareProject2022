@@ -3,9 +3,6 @@ package Beautymain;
 import java.util.ArrayList;
 
 public class Visit {
-
-	
-	
 	public static ArrayList<Visit> StatusArray = new ArrayList<Visit>() ;
 	public String date;
 	public String UserName;
@@ -20,10 +17,5 @@ public class Visit {
 		this.time = time;
 		TypeOfR = typeOfR;
 		Status = status;
+		}
 	}
-	
-	
-	
-	
-	
-}

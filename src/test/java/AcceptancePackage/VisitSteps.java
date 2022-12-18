@@ -30,7 +30,7 @@ public void booked_users_with_their_state(io.cucumber.datatable.DataTable dataTa
 	}
 
 @Given("This user has username {string} ,came to his appointment {string} ,on date {string} ,at {string} ,he was {string}")
-public void this_user_has_username_came_to_his_appointment_on_date_at_he_was(String date, String username, String time, String type, String status) {
+public void this_user_has_username_came_to_his_appointment_on_date_at_he_was(String username, String type, String date, String time, String status) {
    Un =username;
    Type = type;
    Date = date;
@@ -39,7 +39,7 @@ public void this_user_has_username_came_to_his_appointment_on_date_at_he_was(Str
    }
 
 @Given("This user has been visited username {string} ,came to his appointment {string} ,on date {string} ,at {string} ,he was {string}")
-public void this_user_has_been_visited_username_came_to_his_appointment_on_date_at_he_was(String date, String username, String time, String type, String status) {
+public void this_user_has_been_visited_username_came_to_his_appointment_on_date_at_he_was(String username, String type, String date, String time, String status) {
 	   Un =username;
 	   Type = type;
 	   Date = date;
@@ -53,6 +53,7 @@ public void he_visited_the_center_and_was_converted_into_a_visitor_already() {
 		while((Visit.StatusArray.get(i).UserName.contains(Un)) && (Visit.StatusArray.get(i).Status.contains(Status)) && (Visit.StatusArray.get(i).TypeOfR.contains(Type))&& (Visit.StatusArray.get(i).date.contains(Date))&& (Visit.StatusArray.get(i).time.contains(Time))) {
 			if(Status.contains("visited")) {
 				Visitflag = 0;
+//				System.out.print(Visitflag);
 				break;
 				}
 			}
@@ -60,17 +61,17 @@ public void he_visited_the_center_and_was_converted_into_a_visitor_already() {
 	}
 @Then("do nothing")
 public void do_nothing() {
-//	assertTrue(Visitflag == 0);
+	assertTrue(Visitflag == 0);
 	}
 
 
 @When("it was time to visit and the user came, but the system had not converted his status to a visitor yet")
 public void it_was_time_to_visit_and_the_user_came_but_the_system_had_not_converted_his_status_to_a_visitor_yet() {
 	for(int i=0; i< Visit.StatusArray.size() ; i++) {
-		if((Visit.StatusArray.get(i).Status.contains(Status)) && (Visit.StatusArray.get(i).TypeOfR.contains(Type))&& (Visit.StatusArray.get(i).date.contains(Date))&& (Visit.StatusArray.get(i).time.contains(Time))) {
+		if((Visit.StatusArray.get(i).UserName.contains(Un)) && (Visit.StatusArray.get(i).Status.contains(Status)) && (Visit.StatusArray.get(i).TypeOfR.contains(Type))&& (Visit.StatusArray.get(i).date.contains(Date))&& (Visit.StatusArray.get(i).time.contains(Time))) {
 			if(!Status.contains("visited")){
 				Visitflag = 1;
-				System.out.print(Visitflag);
+//				System.out.print(Visitflag);
 				break;
 				}
 			}
@@ -83,7 +84,7 @@ for(int i=0; i< Visit.StatusArray.size() ; i++) {
 	if((Visit.StatusArray.get(i).UserName.contains(Un)) && (Visit.StatusArray.get(i).Status.contains(Status)) && (Visit.StatusArray.get(i).TypeOfR.contains(Type))&& (Visit.StatusArray.get(i).date.contains(Date))&& (Visit.StatusArray.get(i).time.contains(Time))) {
 		if(Visitflag == 1) {
 			Status = "visited";
-//			Visit.StatusArray.get(i).setStatus(Status);
+			Visit.StatusArray.get(i).Status = Status;
 			assertTrue(Visitflag == 1);
 			}
 		}

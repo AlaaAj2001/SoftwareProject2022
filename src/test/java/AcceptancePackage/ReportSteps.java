@@ -8,7 +8,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class ReportSteps {
-	String Un , Type , Date ,Time, Price;
+	String Un , Type , Date ,Time, Price, month;
 	int ReportFlag = 10;
 	Invoice I;
 	@Given("Users Reservations.")
@@ -29,20 +29,33 @@ public class ReportSteps {
 	
 
 	@When("Admin request this report at month {string}")
-	public void admin_request_this_report_at_month(String month) {
+	public void admin_request_this_report_at_month(String m) {
+		month = m;
 		for(int i=0; i<Invoice.Invoice.size() ; i++) {
 			for(int j=0; j<30 ; j++){
 				if(Invoice.Invoice.get(i).date.contains(j + "/" + month + "/2022")) {
-					System.out.print(Invoice.Invoice.get(i).date +"\n");
 					ReportFlag = 1;
 					}
 				}
 			}
 		}
+				
+		
 
 	@Then("System show it to him")
 	public void system_show_it_to_him() {
+		System.out.print("\n" + "\n" + "Users Reservations information in " + month + " month" + "\n");
+		for(int i=0; i<Invoice.Invoice.size()/2 ; i++) {
+			for(int j=0; j<30 ; j++){
+				if(Invoice.Invoice.get(i).date.contains(j + "/" + month + "/2022")) {
+					System.out.print(Invoice.Invoice.get(i).UserName +"\t");
+					System.out.print(Invoice.Invoice.get(i).TypeOfS +"\t");
+					System.out.print(Invoice.Invoice.get(i).Price +"\t");
+					System.out.print(Invoice.Invoice.get(i).date +"\t");
+					System.out.print(Invoice.Invoice.get(i).time +"\n");
+					}
+				}
+			}
 		assertTrue(ReportFlag == 1);
-		
+		}
 	}
-}

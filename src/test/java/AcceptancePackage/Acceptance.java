@@ -9,7 +9,7 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = "use_case/Login.feature", 
+		features = "use_cases", 
 		monochrome = false,
         snippets = SnippetType.CAMELCASE,
         glue = {"AcceptancePackage"},
