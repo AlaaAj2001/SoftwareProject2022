@@ -1,6 +1,8 @@
 package AcceptancePackage;
 
-import static org.junit.Assert.assertTrue;
+
+
+import static org.junit.Assert.assertEquals;
 
 import beauty_main.Services;
 import io.cucumber.java.en.Given;
@@ -20,7 +22,7 @@ public class ServicesSteps
 				SP = dataTable.cell(i,1);
 				
 				S = new Services(SName, SP);
-				Services.SERVICES.add(i, S);
+				Services.getS().add(i, S);
 				}
 		}
 
@@ -32,8 +34,8 @@ public class ServicesSteps
 
 	@When("it is entered before")
 	public void it_is_entered_before() {
-		for(int i=0; i< Services.SERVICES.size() ; i++) {
-			while((Services.SERVICES.get(i).ServicesName.contains(SN)) && (Services.SERVICES.get(i).ServicesPrice.contains(P))) {
+		for(int i=0; i< Services.getS().size() ; i++) {
+			while((Services.getS().get(i).getServicesName().contains(SN)) && (Services.getS().get(i).getServicesPrice().contains(P))) {
 				SERVICESflag = 0;
 				break;
 				}
@@ -42,23 +44,23 @@ public class ServicesSteps
 
 	@Then("System show admin that this service is one of the services provided by the salon")
 	public void system_show_admin_that_this_service_is_one_of_the_services_provided_by_the_salon() {
-		assertTrue(SERVICESflag == 0);
+		assertEquals(0,SERVICESflag);
 	}
 
 	@When("it is not entered before")
 	public void it_is_not_entered_before() {
 		
-		for(int i=0; i< Services.SERVICES.size() ; i++) {
-			if((!Services.SERVICES.get(i).ServicesName.contains(SN)) && (!Services.SERVICES.get(i).ServicesPrice.contains(P))) {
+		for(int i=0; i< Services.getS().size() ; i++) {
+			if((!Services.getS().get(i).getServicesName().contains(SN)) && (!Services.getS().get(i).getServicesPrice().contains(P))) {
 				SERVICESflag = 1;
 				S = new Services(SN, P);
-				Services.SERVICES.add(S);
+				Services.getS().add(S);
 				}
 			}
 		}
 
 	@Then("The admin will enter it into the system")
 	public void the_admin_will_enter_it_into_the_system() {
-		assertTrue(SERVICESflag == 1);
+		assertEquals(1,SERVICESflag);
 		}
 	}

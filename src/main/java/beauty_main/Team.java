@@ -1,15 +1,29 @@
 package beauty_main;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Team {
-	public static ArrayList<Team> TEAM = new ArrayList<Team>() ;
-	public String TName;
-	public String ST;
+	protected static final List<Team> T = new ArrayList<>() ;
+	protected String tName;
+	protected String sT;
 	
-	public Team(String tName, String st) {
+	public Team(String tname, String st) {
 		super();
-		TName = tName;
-		ST = st;
+		tName = tname;
+		sT = st;
 		}
+
+	public static List<Team> getTeam() {
+		return T;
+	}
+
+	public String getTName() {
+		return tName;
+	}
+
+	public String getST() {
+		return sT;
+	}
+	
 	}

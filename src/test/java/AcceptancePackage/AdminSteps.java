@@ -1,13 +1,12 @@
 package AcceptancePackage;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class AdminSteps
-{
+public class AdminSteps{
 	String Us, Pass;
 	int adminflag = 10; 
 	@Given("This user is an admin and his username {string} , Password is {string}")
@@ -52,11 +51,11 @@ public class AdminSteps
 	
 	@Then("Login complete successfully and he can access the system administration")
 	public void login_complete_successfully_and_he_can_access_the_system_administration() {
-		 assertTrue(adminflag == 1 );
+		assertEquals(1,adminflag);
 	}
 	
 	@Then("Admin Login failed")
 	public void admin_login_failed() {
-	  assertTrue(adminflag == 0);
+		assertEquals(0,adminflag);
 	}
 }

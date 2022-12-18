@@ -1,24 +1,39 @@
 package beauty_main;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class User {
-	public static ArrayList<User> USERS = new ArrayList<User>() ;
-	public String Password;
-	public String UserName;
-	public int PhoneN;
+	protected static final List<User> U = new ArrayList<>() ;
+	protected String password;
+	protected String userName;
+	protected int phoneN;
 	
-	User u;
+	User us;
 	
 	
-	public void setPassword(String password) {
-		Password = password;
+	public void setPassword(String pass) {
+		password = pass;
 	}
-	public void setUserName(String userName) {
-		UserName = userName;
+	public void setUserName(String username) {
+		userName = username;
 	}
-	public void setPhoneN(int phoneN) {
-		PhoneN = phoneN;
+	public void setPhoneN(int phonen) {
+		phoneN = phonen;
+	}
+	
+	public static List<User> getU() {
+		return U;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public int getPhoneN() {
+		return phoneN;
 	}
 	
 public User(){
@@ -26,9 +41,9 @@ public User(){
 		}
 
 public User(String n, String p, int pn){
-	this.UserName = n;
-	this.Password = p;
-	this.PhoneN = pn;
+	this.userName = n;
+	this.password = p;
+	this.phoneN = pn;
 	}
 
 

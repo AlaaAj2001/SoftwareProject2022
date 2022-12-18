@@ -1,8 +1,9 @@
 package AcceptancePackage;
 
 
-import static org.junit.Assert.assertTrue;
 
+
+import static org.junit.Assert.assertEquals;
 
 import org.junit.BeforeClass;
 
@@ -32,7 +33,7 @@ public void preBookedUsers(io.cucumber.datatable.DataTable dataTable) {
 	    Time = dataTable.cell(i,4);
 		
 	    R = new Reservation(Date , UserName, PhoneNu ,Time , Type );
-		Reservation.Reservation.add(i, R);
+		Reservation.getR().add(i, R);
 		}
 	}
 
@@ -71,8 +72,8 @@ public void this_user_does_not_exist_before_his_username_phone_number_is_booked_
 
 @When("this reservation exists")
 public void this_reservation_exists() {
-	for(int i=0; i< Reservation.Reservation.size() ; i++) {
-		while((Reservation.Reservation.get(i).UserName.contains(Un)) && (Reservation.Reservation.get(i).PhoneN.contains(Ph)) && (Reservation.Reservation.get(i).TypeOfR.contains(Type))&& (Reservation.Reservation.get(i).date.contains(Date)) && (Reservation.Reservation.get(i).time.contains(Time))) {
+	for(int i=0; i< Reservation.getR().size() ; i++) {
+		while((Reservation.getR().get(i).getUserName().contains(Un)) && (Reservation.getR().get(i).getPhoneN().contains(Ph)) && (Reservation.getR().get(i).getTypeOfR().contains(Type))&& (Reservation.getR().get(i).getDate().contains(Date)) && (Reservation.getR().get(i).getTime().contains(Time))) {
 			Reservationflag = 0;
 			break;
 			}
@@ -81,11 +82,11 @@ public void this_reservation_exists() {
 
 @When("He has not reserved before and system allow to book it")
 public void he_has_not_reserved_before_and_system_allow_to_book_it() {
-	for(int i=0; i< Reservation.Reservation.size() ; i++) {
-		if((!Reservation.Reservation.get(i).UserName.contains(Un)) && (!Reservation.Reservation.get(i).PhoneN.contains(Ph)) && (!Reservation.Reservation.get(i).TypeOfR.contains(Type)) && (!Reservation.Reservation.get(i).date.contains(Date)) && (!Reservation.Reservation.get(i).time.contains(Time))) {
+	for(int i=0; i< Reservation.getR().size() ; i++) {
+		if((!Reservation.getR().get(i).getUserName().contains(Un)) && (!Reservation.getR().get(i).getPhoneN().contains(Ph)) && (!Reservation.getR().get(i).getTypeOfR().contains(Type)) && (!Reservation.getR().get(i).getDate().contains(Date)) && (!Reservation.getR().get(i).getTime().contains(Time))) {
 			Reservationflag = 1;
 			R = new Reservation(Date , Un, Ph ,Time , Type );
-			Reservation.Reservation.add(i, R);
+			Reservation.getR().add(i, R);
 			break;
 			}   
 		}
@@ -93,8 +94,8 @@ public void he_has_not_reserved_before_and_system_allow_to_book_it() {
 
 @When("He has not reserved before and system does not allow to book it")
 public void he_has_not_reserved_before_and_system_does_not_allow_to_book_it() {
-	for(int i=0; i< Reservation.Reservation.size() ; i++) {
-		if((!Reservation.Reservation.get(i).UserName.contains(Un)) && (!Reservation.Reservation.get(i).PhoneN.contains(Ph)) && (!Reservation.Reservation.get(i).TypeOfR.contains(Type)) && (!Reservation.Reservation.get(i).date.contains(Date)) && (!Reservation.Reservation.get(i).time.contains(Time))) {
+	for(int i=0; i< Reservation.getR().size() ; i++) {
+		if((!Reservation.getR().get(i).getUserName().contains(Un)) && (!Reservation.getR().get(i).getPhoneN().contains(Ph)) && (!Reservation.getR().get(i).getTypeOfR().contains(Type)) && (!Reservation.getR().get(i).getDate().contains(Date)) && (!Reservation.getR().get(i).getTime().contains(Time))) {
 			Reservationflag = 0;
 			break;
 			}   
@@ -103,19 +104,19 @@ public void he_has_not_reserved_before_and_system_does_not_allow_to_book_it() {
 
 @Then("System show him it is already exist")
 public void system_show_him_it_is_already_exist() {
-	assertTrue(Reservationflag == 0);
+	assertEquals(0,Reservationflag);
 	}
 
 
 
 @Then("This appointment has been successfully booked")
 public void this_appointment_has_been_successfully_booked() {
-	assertTrue(Reservationflag == 1);
+	assertEquals(1,Reservationflag);
 	}
 
 
 @Then("This reservation was rejected")
 public void this_reservation_was_rejected() {
-	assertTrue(Reservationflag == 0);
+	assertEquals(0,Reservationflag);
 	}
 }

@@ -1,6 +1,7 @@
 package AcceptancePackage;
 
-import static org.junit.Assert.assertTrue;
+
+import static org.junit.Assert.assertEquals;
 
 import beauty_main.Invoice;
 import io.cucumber.java.en.Given;
@@ -22,7 +23,7 @@ public class ReportSteps {
 			Time = dataTable.cell(i,4);
 			
 			I = new Invoice(Date , UserName ,Time , Type, Price );
-			Invoice.I.add(i, I);
+			Invoice.getI().add(i, I);
 			}
 		}
 		
@@ -31,9 +32,9 @@ public class ReportSteps {
 	@When("Admin request this report at month {string}")
 	public void admin_request_this_report_at_month(String m) {
 		month = m;
-		for(int i=0; i<Invoice.I.size() ; i++) {
+		for(int i=0; i<Invoice.getI().size() ; i++) {
 			for(int j=0; j<30 ; j++){
-				if(Invoice.I.get(i).date.contains(j + "/" + month + "/2022")) {
+				if(Invoice.getI().get(i).getDate().contains(j + "/" + month + "/2022")) {
 					ReportFlag = 1;
 					}
 				}
@@ -45,17 +46,17 @@ public class ReportSteps {
 	@Then("System show it to him")
 	public void system_show_it_to_him() {
 		System.out.print("\n" + "\n" + "Users Reservations information in " + month + " month" + "\n");
-		for(int i=0; i<Invoice.I.size()/2 ; i++) {
+		for(int i=0; i<Invoice.getI().size()/2 ; i++) {
 			for(int j=0; j<30 ; j++){
-				if(Invoice.I.get(i).date.contains(j + "/" + month + "/2022")) {
-					System.out.print(Invoice.I.get(i).UserName +"\t");
-					System.out.print(Invoice.I.get(i).TypeOfS +"\t");
-					System.out.print(Invoice.I.get(i).Price +"\t");
-					System.out.print(Invoice.I.get(i).date +"\t");
-					System.out.print(Invoice.I.get(i).time +"\n");
+				if(Invoice.getI().get(i).getDate().contains(j + "/" + month + "/2022")) {
+					System.out.print(Invoice.getI().get(i).getUserName() +"\t");
+					System.out.print(Invoice.getI().get(i).getTypeOfS() +"\t");
+					System.out.print(Invoice.getI().get(i).getPrice() +"\t");
+					System.out.print(Invoice.getI().get(i).getDate() +"\t");
+					System.out.print(Invoice.getI().get(i).getTime() +"\n");
 					}
 				}
 			}
-		assertTrue(ReportFlag == 1);
+		assertEquals(1,ReportFlag);
 		}
 	}

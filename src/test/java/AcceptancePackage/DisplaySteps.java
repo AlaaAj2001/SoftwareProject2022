@@ -1,8 +1,7 @@
 package AcceptancePackage;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
-import beauty_main.Invoice;
 import beauty_main.Services;
 import beauty_main.Team;
 import io.cucumber.java.en.Given;
@@ -36,7 +35,7 @@ public class DisplaySteps {
 			ST = dataTable.cell(i,1);
 			
 			T = new Team(TName, ST);
-			Team.TEAM.add(i, T);
+			Team.getTeam().add(i, T);
 			}	
 		}
 	
@@ -49,7 +48,7 @@ public class DisplaySteps {
 				SP = dataTable.cell(i,1);
 				
 				S = new Services(SName, SP);
-				Services.SERVICES.add(i, S);
+				Services.getS().add(i, S);
 				}	
 			}
 		
@@ -68,12 +67,12 @@ public class DisplaySteps {
 			System.out.print("Service" + "\t" + "|" + "\t");
 			System.out.print("Price" + "\t" + "|" + "\t");
 			System.out.print("\n");
-			for(int i=0; i<Services.SERVICES.size() ; i++) {
-				System.out.print(Services.SERVICES.get(i).ServicesName + "\t" + "|" + "\t");
-				System.out.print(Services.SERVICES.get(i).ServicesPrice + "\t" + "|" + "\t");
+			for(int i=0; i<Services.getS().size() ; i++) {
+				System.out.print(Services.getS().get(i).getServicesName() + "\t" + "|" + "\t");
+				System.out.print(Services.getS().get(i).getServicesPrice() + "\t" + "|" + "\t");
 				System.out.print("\n");
 				}
-			assertTrue(idflag1 == 1);
+			assertEquals(1,idflag1);
 			}
 		}
 
@@ -91,13 +90,13 @@ public class DisplaySteps {
 			System.out.print("Employee" + "\t" + "|" + "\t");
 		    System.out.print("Service" + "\t" + "|" + "\t");
 		    System.out.print("\n");
-			for(int i=0; i<Team.TEAM.size()/2 ; i++) {
-				System.out.print(Team.TEAM.get(i).TName + "\t" + "|" + "\t");
-			    System.out.print(Team.TEAM.get(i).ST + "\t" + "|" + "\t");
+			for(int i=0; i<Team.getTeam().size()/2 ; i++) {
+				System.out.print(Team.getTeam().get(i).getTName() + "\t" + "|" + "\t");
+			    System.out.print(Team.getTeam().get(i).getST() + "\t" + "|" + "\t");
 			    System.out.print("\n");
 			    }
 			System.out.print("\n"+ "\n" + "\n");
-			assertTrue(idflag2 == 2);
+			assertEquals(2,idflag2);
 			}
 		}
 	}

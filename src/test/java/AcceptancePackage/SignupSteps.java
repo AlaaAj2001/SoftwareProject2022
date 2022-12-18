@@ -1,9 +1,8 @@
 package AcceptancePackage;
 
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
-import org.junit.Assert;
 import org.junit.BeforeClass;
 
 import beauty_main.User;
@@ -30,7 +29,7 @@ public class SignupSteps {
 				String.valueOf(PhoneNu);
 				
 				u = new User(UserName, Pass, PhoneNu);
-				User.USERS.add(i, u);
+				User.getU().add(i, u);
 		}
 		}
 	@Given("This user has username {string} , Password is {string} and PhoneNumber is {string}")
@@ -48,8 +47,8 @@ public class SignupSteps {
 	}
 	@When("he is registered before")
 	public void heIsRegisteredBefore() {
-		for(int i=0; i< User.USERS.size() ; i++) {
-			if((User.USERS.get(i).UserName.contains(Un)) && (User.USERS.get(i).Password.contains(P))) {
+		for(int i=0; i< User.getU().size() ; i++) {
+			if((User.getU().get(i).getUserName().contains(Un)) && (User.getU().get(i).getPassword().contains(P))) {
 				SignUpflag = 0;
 				break;
 				}
@@ -57,22 +56,22 @@ public class SignupSteps {
 		}
 	@Then("System show him it is already registered")
 	public void systemShowHimItIsAlreadyRegistered() {
-		assertTrue(SignUpflag == 0);
+		assertEquals(0,SignUpflag);
 	}
 	
 	@When("He has not registered before")
 	public void heHasNotRegisteredBefore() {
-		for(int i=0; i< User.USERS.size() ; i++) {
-			while(!(User.USERS.get(i).UserName.contains(Un)) && (!(User.USERS.get(i).Password.contains(P)))){
+		for(int i=0; i< User.getU().size() ; i++) {
+			while(!(User.getU().get(i).getUserName().contains(Un)) && (!(User.getU().get(i).getPassword().contains(P)))){
 				SignUpflag = 1;
 				u = new User(Un, P, Ph);
-				User.USERS.add(u);
+				User.getU().add(u);
 				break;
 				}
 			}
 		}
 	@Then("The registration has been completed successfully")
 	public void theRegistrationHasBeenCompletedSuccessfully() {
-		assertTrue(SignUpflag == 1);
+		assertEquals(1,SignUpflag);
 		}
 	}

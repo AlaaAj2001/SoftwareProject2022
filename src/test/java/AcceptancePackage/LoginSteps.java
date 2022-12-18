@@ -1,6 +1,7 @@
 package AcceptancePackage;
 
-import static org.junit.Assert.assertTrue;
+
+import static org.junit.Assert.assertEquals;
 
 import beauty_main.User;
 import io.cucumber.java.en.Given;
@@ -22,7 +23,7 @@ public void thisUserHasHisUsernamePasswordIs(String Username, String Passw) {
 	u.setUserName("Alaa");
 	u.setPhoneN(598479222);
 	u.setPassword("123456");
-	User.USERS.add(u);
+	User.getU().add(u);
 	Un = Username;
 	P = Passw;
 	
@@ -42,9 +43,9 @@ public void thisUserHasHisWrongUsernameWrongPasswordIs(String Username, String P
 
 @When("he logged his info in and he is registered before")
 public void heLoggedHisInfoInAndHeIsRegisteredBefore() {
-	for(int i=0; i< User.USERS.size() ; i++) {
+	for(int i=0; i< User.getU().size() ; i++) {
 		
-		if((User.USERS.get(i).UserName.contains(Un)) && (User.USERS.get(i).Password.contains(P))) {
+		if((User.getU().get(i).getUserName().contains(Un)) && (User.getU().get(i).getPassword().contains(P))) {
 			
 			loginflag = 1;
 			break;
@@ -54,8 +55,8 @@ public void heLoggedHisInfoInAndHeIsRegisteredBefore() {
 
 @When("he logged in with wrong password")
 public void heLoggedInWithWrongPassword() {
-	for(int i=0; i< User.USERS.size() ; i++) {
-		while((User.USERS.get(i).UserName.contains(Un)) && (!(User.USERS.get(i).Password.contains(P)))){
+	for(int i=0; i< User.getU().size() ; i++) {
+		while((User.getU().get(i).getUserName().contains(Un)) && (!(User.getU().get(i).getPassword().contains(P)))){
 			loginflag = 0;
 			break;
 			}
@@ -64,8 +65,8 @@ public void heLoggedInWithWrongPassword() {
 
 @When("he logged in with wrong both of them")
 public void heLoggedInWithWrongBothOfThem() {
-	for(int i=0; i< User.USERS.size() ; i++) {
-		while(!(User.USERS.get(i).UserName.contains(Un)) && (!(User.USERS.get(i).Password.contains(P)))){
+	for(int i=0; i< User.getU().size() ; i++) {
+		while(!(User.getU().get(i).getUserName().contains(Un)) && (!(User.getU().get(i).getPassword().contains(P)))){
 			loginflag = 0;
 			break;
 			}
@@ -74,11 +75,11 @@ public void heLoggedInWithWrongBothOfThem() {
 
 @Then("Login complete successfully")
 public void loginCompleteSuccessfully() {
-	assertTrue(loginflag == 1);
+	assertEquals(1,loginflag);
 }
 @Then("Login failed")
 public void loginFailed() {
-	assertTrue(loginflag == 0);
+	assertEquals(0,loginflag);
 }
 
 

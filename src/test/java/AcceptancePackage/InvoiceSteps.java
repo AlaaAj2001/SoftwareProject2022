@@ -1,6 +1,7 @@
 package AcceptancePackage;
 
-import static org.junit.Assert.assertTrue;
+
+import static org.junit.Assert.assertEquals;
 
 import beauty_main.Invoice;
 import io.cucumber.java.en.Given;
@@ -24,7 +25,7 @@ public class InvoiceSteps {
 			Time = dataTable.cell(i,4);
 			
 			I = new Invoice(Date , UserName ,Time , Type, Price );
-			Invoice.I.add(i, I);
+			Invoice.getI().add(i, I);
 			}
 		
 		}
@@ -40,8 +41,8 @@ public class InvoiceSteps {
 
 	@When("This user request his invoice")
 	public void this_user_request_his_invoice() {
-		for(int i=0; i< Invoice.I.size() ; i++) {
-			if((Invoice.I.get(i).UserName.contains(Un)) && (Invoice.I.get(i).TypeOfS.contains(Type)) && (Invoice.I.get(i).date.contains(Date))&& (Invoice.I.get(i).time.contains(Time)) && (Invoice.I.get(i).Price.contains(Price))) {
+		for(int i=0; i< Invoice.getI().size() ; i++) {
+			if((Invoice.getI().get(i).getUserName().contains(Un)) && (Invoice.getI().get(i).getTypeOfS().contains(Type)) && (Invoice.getI().get(i).getDate().contains(Date))&& (Invoice.getI().get(i).getTime().contains(Time)) && (Invoice.getI().get(i).getPrice().contains(Price))) {
 				InvoiceFlag = 1;
 				break;
 				
@@ -71,6 +72,6 @@ public class InvoiceSteps {
 		System.out.print("\t");
 		System.out.print("Thank you for coming");
 		System.out.print("\n");
-		assertTrue(InvoiceFlag == 1);
+		assertEquals(1,InvoiceFlag);
 	}
 }
