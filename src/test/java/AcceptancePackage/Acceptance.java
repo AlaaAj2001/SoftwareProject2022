@@ -9,12 +9,12 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = "use_cases", 
+		features = "use_case/Login.feature", 
 		monochrome = false,
         snippets = SnippetType.CAMELCASE,
         glue = {"AcceptancePackage"},
         dryRun = false)
 
-public class LoginAcceptance {
+public class Acceptance {
 	
 }

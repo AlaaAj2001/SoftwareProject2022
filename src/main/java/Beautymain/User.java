@@ -8,32 +8,21 @@ public class User {
 	public String UserName;
 	public int PhoneN;
 	
-	public static ArrayList<User> getUSERS() {
-		return USERS;
-	}
-	public static void setUSERS(ArrayList<User> uSERS) {
-		USERS = uSERS;
-	}
-	public String getPassword() {
-		return Password;
-	}
+	User u;
+	
+	
 	public void setPassword(String password) {
 		Password = password;
 	}
-	public String getUserName() {
-		return UserName;
-	}
 	public void setUserName(String userName) {
 		UserName = userName;
-	}
-	public int getPhoneN() {
-		return PhoneN;
 	}
 	public void setPhoneN(int phoneN) {
 		PhoneN = phoneN;
 	}
 	
 public User(){
+	
 		}
 
 public User(String n, String p, int pn){
@@ -41,6 +30,7 @@ public User(String n, String p, int pn){
 	this.Password = p;
 	this.PhoneN = pn;
 	}
+
 
 
 }

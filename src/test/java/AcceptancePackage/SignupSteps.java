@@ -1,8 +1,10 @@
 package AcceptancePackage;
 
-import static org.junit.Assert.assertFalse;
+
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Assert;
+import org.junit.BeforeClass;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -14,8 +16,9 @@ public class SignupSteps {
 	User u;
 	String Un, P;
 	int Ph = 0;
-	boolean SignUpflag;
+	int SignUpflag = 10;
 	
+	@BeforeClass
 	@Given("Registered users")
 	public void registeredUsers(io.cucumber.datatable.DataTable dataTable) {
 		String UserName, Pass;
@@ -37,32 +40,40 @@ public class SignupSteps {
 		P = Passw;
 		PhoneN.valueOf(Ph);
 	}
+	
+	@Given("This user does not exist before has username {string} , Password is {string} and PhoneNumber is {string}")
+	public void this_user_does_not_exist_before_has_username_password_is_and_phone_number_is(String Username, String Passw, String PhoneN) {
+		Un = Username;
+		P = Passw;
+		PhoneN.valueOf(Ph);
+	}
 	@When("he is registered before")
 	public void heIsRegisteredBefore() {
 		for(int i=0; i< User.USERS.size() ; i++) {
-			while((Un ==  User.USERS.get(i).UserName) && (P ==  User.USERS.get(i).Password) && (Ph ==  User.USERS.get(i).PhoneN)) 
-				SignUpflag = false;
+			if((User.USERS.get(i).UserName.contains(Un)) && (User.USERS.get(i).Password.contains(P))) {
+				SignUpflag = 0;
+				break;
+				}
 			}
-	}
+		}
 	@Then("System show him it is already registered")
 	public void systemShowHimItIsAlreadyRegistered() {
-		Assert.assertFalse(SignUpflag);
+		assertTrue(SignUpflag == 0);
 	}
 	
 	@When("He has not registered before")
 	public void heHasNotRegisteredBefore() {
 		for(int i=0; i< User.USERS.size() ; i++) {
-			while((Un !=  User.USERS.get(i).UserName) && (P !=  User.USERS.get(i).Password) && (Ph !=  User.USERS.get(i).PhoneN)) {
-				
+			while(!(User.USERS.get(i).UserName.contains(Un)) && (!(User.USERS.get(i).Password.contains(P)))){
+				SignUpflag = 1;
 				u = new User(Un, P, Ph);
 				User.USERS.add(u);
+				break;
+				}
 			}
-			
-			}
-		
-	}
+		}
 	@Then("The registration has been completed successfully")
 	public void theRegistrationHasBeenCompletedSuccessfully() {
-		Assert.assertTrue(!SignUpflag);
-	}
+		assertTrue(SignUpflag == 1);
+		}
 	}

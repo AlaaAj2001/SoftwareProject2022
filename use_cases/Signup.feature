@@ -1,7 +1,9 @@
 @tag
  Feature: Signup
  
+
 Background: Pre-registered Users.
+
 Given Registered users
       
  |   Zena    |   12345    | 0598177593 |           
@@ -16,7 +18,7 @@ Given Registered users
  Then System show him it is already registered
  
 Scenario: User registration does not exist before
- Given This user has username "Mera" , Password is "12347" and PhoneNumber is "0598479222"
+ Given This user does not exist before has username "Mera" , Password is "12347" and PhoneNumber is "0598479222"
  When He has not registered before
  Then The registration has been completed successfully
  
