@@ -2,7 +2,7 @@ package AcceptancePackage;
 
 import static org.junit.Assert.assertTrue;
 
-import Beautymain.Invoice;
+import beauty_main.Invoice;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -22,7 +22,7 @@ public class ReportSteps {
 			Time = dataTable.cell(i,4);
 			
 			I = new Invoice(Date , UserName ,Time , Type, Price );
-			Invoice.Invoice.add(i, I);
+			Invoice.I.add(i, I);
 			}
 		}
 		
@@ -31,9 +31,9 @@ public class ReportSteps {
 	@When("Admin request this report at month {string}")
 	public void admin_request_this_report_at_month(String m) {
 		month = m;
-		for(int i=0; i<Invoice.Invoice.size() ; i++) {
+		for(int i=0; i<Invoice.I.size() ; i++) {
 			for(int j=0; j<30 ; j++){
-				if(Invoice.Invoice.get(i).date.contains(j + "/" + month + "/2022")) {
+				if(Invoice.I.get(i).date.contains(j + "/" + month + "/2022")) {
 					ReportFlag = 1;
 					}
 				}
@@ -45,14 +45,14 @@ public class ReportSteps {
 	@Then("System show it to him")
 	public void system_show_it_to_him() {
 		System.out.print("\n" + "\n" + "Users Reservations information in " + month + " month" + "\n");
-		for(int i=0; i<Invoice.Invoice.size()/2 ; i++) {
+		for(int i=0; i<Invoice.I.size()/2 ; i++) {
 			for(int j=0; j<30 ; j++){
-				if(Invoice.Invoice.get(i).date.contains(j + "/" + month + "/2022")) {
-					System.out.print(Invoice.Invoice.get(i).UserName +"\t");
-					System.out.print(Invoice.Invoice.get(i).TypeOfS +"\t");
-					System.out.print(Invoice.Invoice.get(i).Price +"\t");
-					System.out.print(Invoice.Invoice.get(i).date +"\t");
-					System.out.print(Invoice.Invoice.get(i).time +"\n");
+				if(Invoice.I.get(i).date.contains(j + "/" + month + "/2022")) {
+					System.out.print(Invoice.I.get(i).UserName +"\t");
+					System.out.print(Invoice.I.get(i).TypeOfS +"\t");
+					System.out.print(Invoice.I.get(i).Price +"\t");
+					System.out.print(Invoice.I.get(i).date +"\t");
+					System.out.print(Invoice.I.get(i).time +"\n");
 					}
 				}
 			}

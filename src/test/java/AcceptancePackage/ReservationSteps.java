@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.BeforeClass;
 
-import Beautymain.Reservation;
+import beauty_main.Reservation;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

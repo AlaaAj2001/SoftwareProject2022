@@ -1,0 +1,10 @@
+AcceptancePackage\SignupSteps.class
+AcceptancePackage\ReservationSteps.class
+AcceptancePackage\VisitSteps.class
+AcceptancePackage\AdminSteps.class
+AcceptancePackage\InvoiceSteps.class
+AcceptancePackage\DisplaySteps.class
+AcceptancePackage\ServicesSteps.class
+AcceptancePackage\Acceptance.class
+AcceptancePackage\LoginSteps.class
+AcceptancePackage\ReportSteps.class

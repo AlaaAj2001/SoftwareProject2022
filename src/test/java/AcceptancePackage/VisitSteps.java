@@ -2,7 +2,7 @@ package AcceptancePackage;
 
 import static org.junit.Assert.assertTrue;
 
-import Beautymain.Visit;
+import beauty_main.Visit;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

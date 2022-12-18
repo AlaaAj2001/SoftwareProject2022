@@ -2,7 +2,7 @@ package AcceptancePackage;
 
 import static org.junit.Assert.assertTrue;
 
-import Beautymain.Invoice;
+import beauty_main.Invoice;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -24,7 +24,7 @@ public class InvoiceSteps {
 			Time = dataTable.cell(i,4);
 			
 			I = new Invoice(Date , UserName ,Time , Type, Price );
-			Invoice.Invoice.add(i, I);
+			Invoice.I.add(i, I);
 			}
 		
 		}
@@ -40,8 +40,8 @@ public class InvoiceSteps {
 
 	@When("This user request his invoice")
 	public void this_user_request_his_invoice() {
-		for(int i=0; i< Invoice.Invoice.size() ; i++) {
-			if((Invoice.Invoice.get(i).UserName.contains(Un)) && (Invoice.Invoice.get(i).TypeOfS.contains(Type)) && (Invoice.Invoice.get(i).date.contains(Date))&& (Invoice.Invoice.get(i).time.contains(Time)) && (Invoice.Invoice.get(i).Price.contains(Price))) {
+		for(int i=0; i< Invoice.I.size() ; i++) {
+			if((Invoice.I.get(i).UserName.contains(Un)) && (Invoice.I.get(i).TypeOfS.contains(Type)) && (Invoice.I.get(i).date.contains(Date))&& (Invoice.I.get(i).time.contains(Time)) && (Invoice.I.get(i).Price.contains(Price))) {
 				InvoiceFlag = 1;
 				break;
 				

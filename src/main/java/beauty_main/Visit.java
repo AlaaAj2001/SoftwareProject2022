@@ -1,4 +1,4 @@
-package Beautymain;
+package beauty_main;
 
 import java.util.ArrayList;
 

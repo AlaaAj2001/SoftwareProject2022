@@ -1,9 +1,9 @@
-package Beautymain;
+package beauty_main;
 
 import java.util.ArrayList;
 
 public class Invoice {
-	public static ArrayList<Invoice> Invoice = new ArrayList<Invoice>() ;
+	protected static ArrayList<Invoice> I = new ArrayList<Invoice>() ;
 	public String date;
 	public String UserName;
 	public String Price;
