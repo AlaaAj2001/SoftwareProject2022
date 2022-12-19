@@ -1,4 +1,4 @@
-package AcceptancePackage;
+package acceptance_package;
 
 import org.junit.runner.RunWith;
 
@@ -12,7 +12,7 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
 		features = "use_cases", 
 		monochrome = false,
         snippets = SnippetType.CAMELCASE,
-        glue = {"AcceptancePackage"},
+        glue = {"acceptance_package"},
         dryRun = false)
 
 public class Acceptance {

@@ -1,4 +1,4 @@
-package AcceptancePackage;
+package acceptance_package;
 
 import static org.junit.Assert.assertEquals;
 

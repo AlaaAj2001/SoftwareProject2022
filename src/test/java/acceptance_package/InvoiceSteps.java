@@ -1,4 +1,4 @@
-package AcceptancePackage;
+package acceptance_package;
 
 
 import static org.junit.Assert.assertEquals;
@@ -41,9 +41,7 @@ public class InvoiceSteps {
 
 	@When("This user request his invoice")
 	public void this_user_request_his_invoice() {
-		System.out.print(Un + Price + Type + Date + Time + "\n");
 		for(int i=0; i< Invoice.getI().size() ; i++) {
-			System.out.print(Invoice.getI().get(i).getTypeOfS());
 			if((Invoice.getI().get(i).getUserName().contains(Un)) && (Invoice.getI().get(i).getTypeOfS().contains(Type)) && (Invoice.getI().get(i).getDate().contains(Date))&& (Invoice.getI().get(i).getTime().contains(Time)) && (Invoice.getI().get(i).getPrice().contains(Price))) {
 				InvoiceFlag = 1;
 				break;

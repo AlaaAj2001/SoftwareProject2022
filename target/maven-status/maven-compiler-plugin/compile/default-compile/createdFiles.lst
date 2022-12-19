@@ -1,6 +1,6 @@
-Beautymain\Invoice.class
-Beautymain\Team.class
-Beautymain\Visit.class
-Beautymain\Services.class
-Beautymain\Reservation.class
-Beautymain\User.class
+beauty_main\Reservation.class
+beauty_main\Services.class
+beauty_main\Invoice.class
+beauty_main\User.class
+beauty_main\Visit.class
+beauty_main\Team.class

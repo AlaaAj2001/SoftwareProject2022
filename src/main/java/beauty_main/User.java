@@ -32,9 +32,6 @@ public class User {
 	public String getUserName() {
 		return userName;
 	}
-	public int getPhoneN() {
-		return phoneN;
-	}
 	
 public User(){
 	
